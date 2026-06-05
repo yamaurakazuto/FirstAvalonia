@@ -1,6 +1,5 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using System.Diagnostics;
 
 
 namespace FirstAvalonia.Views
@@ -14,7 +13,16 @@ namespace FirstAvalonia.Views
 
         private void Button_OnClick(object? sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Click");
+            if (double.TryParse(Celsius.Text, out double C))
+            {
+                var F = C * (9d / 5d) + 32;
+                Fahrenheit.Text = F.ToString("0.0");
+            }
+            else
+            {
+                Celsius.Text = "0";
+                Fahrenheit.Text = "0";
+            }
         }
     }
 }
